@@ -12,7 +12,9 @@ class Attendees(models.Model):
     name = models.CharField(max_length=100)
     plus_one = models.BooleanField(default=False)
     plus_half = models.BooleanField(default=False)
-    meetup = models.ForeignKey(Meetup, on_delete=models.CASCADE)
+    meetup = models.ForeignKey(Meetup, related_name='attendees', on_delete=models.CASCADE)
+
+
 
     def __str__(self):
         return self.name

@@ -4,9 +4,11 @@ from .models import Attendees
 from .models import Available
 
 class MeetupSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Meetup
-    fields = ('id', 'meetup', 'description')
+    attendees = serializers.StringRelatedField(many=True)
+    
+    class Meta:
+        model = Meetup
+        fields = ('id', 'meetup', 'description','attendees')
 
 class AttendeesSerializer(serializers.ModelSerializer):
   class Meta:

@@ -22,7 +22,7 @@ router = routers.DefaultRouter()
 router.register(r'meetups', views.MeetupView, 'meetup')
 router.register(r'attendees', views.AttendeesView, 'attendees')
 router.register(r'availables', views.AvailableView, 'available')
-
+router.register(r'meetupatts', views.MeetupAttView, 'meetupatt')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
