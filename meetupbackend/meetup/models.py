@@ -23,4 +23,4 @@ class Available(models.Model):
     person = models.ForeignKey(Attendees, related_name='dates', on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.date)
+        return '%s - %s' % (self.date, self.meal)
