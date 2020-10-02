@@ -14,15 +14,13 @@ class Attendees(models.Model):
     plus_half = models.BooleanField(default=False)
     meetup = models.ForeignKey(Meetup, related_name='attendees', on_delete=models.CASCADE)
 
-
-
     def __str__(self):
         return self.name
 
 class Available(models.Model):
     date = models.DateField()
     meal = models.CharField(max_length=100)
-    person = models.ForeignKey(Attendees, on_delete=models.CASCADE)
+    person = models.ForeignKey(Attendees, related_name='dates', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.meal
+        return str(self.date)
