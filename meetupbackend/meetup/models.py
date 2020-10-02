@@ -18,9 +18,9 @@ class Attendees(models.Model):
         return self.name
 
 class Available(models.Model):
-    date = pub_date = models.DateField()
+    date = models.DateField()
     meal = models.CharField(max_length=100)
     person = models.ForeignKey(Attendees, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.date
+        return self.meal
