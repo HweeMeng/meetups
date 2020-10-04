@@ -1,25 +1,27 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import Buttons from './components/buttons';
+
 
 class App extends React.Component {
-  constructor(){
-      super();
-      this.state ={
-        meetup:[],
-      }
+    constructor(props){
+        super(props);
+        this.state ={
+          meetup:{
+            meetup:"",
+            description:"",
+            attendees:[],
+            id:""
+          }
+        }
+        // this.clicky = this.clicky.bind(this);
+        // this.refreshList = this.refreshList.bind(this);
   }
 
-  componentDidMount(){
-    console.log('component did mount runs')
+  async componentDidMount(){
     var params = window.location.href.slice(-1)
     var url = "http://localhost:8000/api/meetups/" + params + "/"
-    console.log(url, "url here!!!")
-    this.refreshList(url);
-    console.log("state here!!!", this.state.meetup )
-    }
-
-  refreshList = (url) => {
     const runWhenDone = (response) => {
       const data = response.data
       console.log("**************")
@@ -27,22 +29,29 @@ class App extends React.Component {
       console.log("**************")
       console.log("**************")
       console.log( data );
-      this.setState({ destinations: data })
+      this.setState({ meetup: data })
     }
     const whenError = (error) => {
         console.log("eerror", error)
     }
-    axios.get(url).then(runWhenDone).catch(whenError)
-  };
+    await (axios.get(url).then(runWhenDone).catch(whenError))
 
-  clicky(){
-    console.log("show button clicked!! ", this.state.meetup)
-  }
+    console.log('component did mount runs')
+    }
   
+    x = () =>{
+      const xyz = this.state.meetup.attendees.map((name, index)=>{
+        console.log("inside x functions", name)
+      })
+    }
   render(){
+    console.log("this is where the this.state is", this.state)
       return (<div className="App">
-                <h1>This is the react app side</h1>
-                <button onClick={this.clicky}>click me</button>
+                <h2>{this.state.meetup.meetup}</h2>
+                <h3>{this.state.meetup.description}</h3>
+                {this.state.meetup.attendees.map((name) => {
+                  return <button> {name} </button>;
+                })}
               </div>
           );
   }
