@@ -50,7 +50,7 @@ class App extends React.Component {
                 <h2>{this.state.meetup.meetup}</h2>
                 <h3>{this.state.meetup.description}</h3>
                 {this.state.meetup.attendees.map((name) => {
-                  return <button> {name} </button>;
+                  return <button key="name.id"> {name.name} </button>;
                 })}
               </div>
           );
