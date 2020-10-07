@@ -15,7 +15,8 @@ class App extends React.Component {
               dates:[]
             }],
             id:""
-          }
+          },
+          commonDates:[],
         }
         // this.clicky = this.clicky.bind(this);
         // this.refreshList = this.refreshList.bind(this);
@@ -58,16 +59,12 @@ class App extends React.Component {
                   </p>
                 </div>)
         })
-      // for (var i = 0; i<this.state.meetup.attendees.length; i++){
-      //   console.log("for loop running")
-      //   console.log("this is the attendees details: ", this.state.meetup.attendees[i])
-      //   for (var j = 0; j<this.state.meetup.attendees[i].dates.length; j++){
-      //     console.log("2nd for loop running")
-      //     console.log("this is the dates details: ", this.state.meetup.attendees[i].dates[j])
-      //     return <p>{this.state.meetup.attendees[i].dates}</p>
-      //   }
-      // }
-      
+    }
+
+    commonDates = () => {
+      var comDates = [];
+      console.log("logging the commondates state: ", this.state.commonDates)
+      console.log("logging the comdates state: ", comDates)
     }
 
   render(){
@@ -76,14 +73,15 @@ class App extends React.Component {
                 <h2>{this.state.meetup.meetup}</h2>
                 <h3>{this.state.meetup.description}</h3>
                 {this.state.meetup.attendees.map((name) => {
-                  return <div>
+                  return <div className="peopleBox">
                           <button className={name.name} key="name.id"> {name.name} </button>
-                          <p>{name.dates.map((date)=>{
-                            return <p>{date}</p>
-                          })}</p>
+                              {name.dates.map((date)=>{
+                              return <ul>{date}</ul>
+                            })}
                         </div>;
                 })}
                 {this.attendeesDates()}
+                {this.commonDates()}
               </div>
           );
   }
