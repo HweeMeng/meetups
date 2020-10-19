@@ -12,22 +12,12 @@ class Buttons extends React.Component {
         // this.refreshList = this.refreshList.bind(this);
   }
 
-  componentDidMount(){
+    componentDidMount(){
     this.state.buttonNames = this.props.names;
     console.log("this is wheer the button components name sare:", this.state.buttonNames)
     this.setState({buttonNames:this.state.buttonNames})
     console.log("this is wheer the button components name sare:", this.state.buttonNames)
     this.refresh();
-  }
-
-    logout(){
-        console.log("logout button clicked and the id of this loc is: ", this.props)
-        const link = document.createElement('a');
-        link.setAttribute('href', '/users/sign_out');
-        link.setAttribute('rel', 'nofollow');
-        link.setAttribute('data-method', 'delete');
-        document.body.appendChild(link);
-        link.click();
     }
 
     refresh(){
@@ -45,10 +35,10 @@ class Buttons extends React.Component {
             </div>
             )
         })
-    return (<div>{butts}</div>)
-    }else{
-        return <h2>boo</h2>
-    }
+        return (<div>{butts}</div>)
+        }else{
+            return <h2>boo</h2>
+        }
 }
 }
 

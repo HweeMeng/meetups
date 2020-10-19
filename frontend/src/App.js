@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import Buttons from './components/buttons';
+import Dates from './components/dates';
 
 
 class App extends React.Component {
@@ -76,12 +76,11 @@ class App extends React.Component {
                   return <div className="peopleBox">
                           <button className={name.name} key="name.id"> {name.name} </button>
                               {name.dates.map((date)=>{
-                              return <ul>{date}</ul>
+                                console.log(date);
+                              return <Dates dates={date}/>
                             })}
                         </div>;
                 })}
-                {this.attendeesDates()}
-                {this.commonDates()}
               </div>
           );
   }

@@ -5,4 +5,7 @@
 .peopleBox{
   display: inline-block;
 }
-
+.dateField{
+  width:10vw;
+  background-color: aquamarine;
+}
